@@ -27,6 +27,8 @@ gem 'devise'
 
 gem 'devise_rpx_connectable'
 
+gem "devise_capturable"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

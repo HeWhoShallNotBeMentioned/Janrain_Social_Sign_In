@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script type="text/javascript">
+  <script type="text/javascript" id="janrainCaptureDevScript">
 (function() {
     if (typeof window.janrain !== 'object') window.janrain = {};
     if (typeof window.janrain.settings !== 'object') window.janrain.settings = {};
@@ -36,7 +36,22 @@
 </head>
 <body>
 
-<%= yield %>
+<div id="container">
+      <div class = "nav">
+        <% if user_signed_in? %>
+          Signed in as <%= current_user.email %>. Not you?
+          <%= link_to "Sign out", destroy_user_session_path %>
+        <% else %>
+          <%= link_to_capturable "Sign in" %>
+
+        <% end %>
+      </div>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+
+      <%= yield %>
+    </div>
 
 </body>
 </html>
